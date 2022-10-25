@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./pages/Home";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Cart from "./pages/Cart";
+import CheckPage from "./pages/CheckPage";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Shop from "./pages/Shop";
+import Navbar from "./components/Navbar";
+import { useSelector } from "react-redux";
 function App() {
+  // const user = JSON.parse(localStorage.getItem("profile"));
+  const { authData } = useSelector((state) => state.auth);
+  const user = authData;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/check" element={<CheckPage />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/register" element={user ? <Home /> : <Register />} />
+        <Route path="/login" element={user ? <Home /> : <Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
