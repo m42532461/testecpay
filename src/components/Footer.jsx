@@ -1,4 +1,6 @@
 import React from "react";
+import { ImFacebook, ImPinterest } from "react-icons/im";
+import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
 const links = [
   {
     title: "Entity types",
@@ -60,7 +62,12 @@ const Footer = () => {
             Optix seamlessly connects your members with the community,
             resources.
           </p>
-          <div className="flex"></div>
+          <div className="flex gap-[25px] text-[20px]">
+            <ImFacebook />
+            <ImPinterest />
+            <FaLinkedinIn />
+            <FaTwitter />
+          </div>
         </div>
         <div className="flex gap-20">
           {links.map((link, index) => (

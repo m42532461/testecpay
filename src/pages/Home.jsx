@@ -6,6 +6,8 @@ import Brand from "../components/Brand";
 import Deal from "../components/Deal";
 import Footer from "../components/Footer";
 import Products from "../components/Products";
+import { MainImg, DOTS } from "../assets";
+import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import * as actionType from "../constants/actionTypes";
 const Home = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -14,18 +16,32 @@ const Home = () => {
 
   return (
     <div className="App w-full  relative">
-      <img src="" alt="" />
-      <div className="relative">
-        <div className="w-[570px] h-[470px] px-24 py-20 gap-[30px] relative z-10 flex flex-col">
-          <h1 className="text-[#244D4D] text-[54px] leading-[72px] font-extrabold relative z-10 text-start">
-            We Help You Make Modern Interior
-          </h1>
-          <span className="text-[#5F5F64] text-[20px] leading-[30px] font-normal relative z-10 text-start">
-            We will help you to make an elegant and luxurious interior designed
-            by professional interior designer.
-          </span>
+      <div className="flex pb-[92px] h-full">
+        <div className="pl-[136px] pr-[110px] pt-10 flex-0.8">
+          <img src={DOTS} alt="" className="w-full" />
         </div>
-        <div className="w-[570px] h-[470px] opacity-40 bg-white absolute top-0 z-0"></div>
+        <div className="w-full flex-[6]">
+          <img src={MainImg} alt="" className=" object-fill w-full" />
+        </div>
+        <div className="absolute top-[45px] z-0">
+          <div className="w-[570px] h-[470px] px-24 py-20 gap-[30px] absolute top-[45px] z-10 flex flex-col">
+            <h1 className="text-[#244D4D] text-[54px] leading-[72px] font-extrabold relative z-10 text-start">
+              We Help You Make Modern Interior
+            </h1>
+            <span className="text-[#5F5F64] text-[20px] leading-[30px] font-normal relative z-10 text-start">
+              We will help you to make an elegant and luxurious interior
+              designed by professional interior designer.
+            </span>
+          </div>
+          <div className="w-[570px] h-[470px] opacity-40 bg-white absolute top-[45px] z-0"></div>
+        </div>
+        <div className="w-24 h-full flex flex-col justify-center items-center gap-10 my-auto">
+          <AiOutlineUp />
+          <AiOutlineDown />
+          <div className="">{"01"}</div>
+          <div className="">{"|"}</div>
+          <div className="">{"06"}</div>
+        </div>
       </div>
       <Brand />
       <Deal />

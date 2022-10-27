@@ -32,7 +32,7 @@ const Products = () => {
           <span>Chair</span>
           <span>Light</span>
         </div>
-        <div className="grid grid-cols-3 gap-14 items-center w-full justify-center">
+        <div className="grid grid-cols-3 gap-14  w-full justify-center">
           {products.map((product) => (
             <Product
               title={product.title}
