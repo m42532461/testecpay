@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Shop from "./pages/Shop";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
+import ProductPage from "./pages/ProductPage";
 function App() {
   // const user = JSON.parse(localStorage.getItem("profile"));
   const { authData } = useSelector((state) => state.auth);
@@ -22,6 +23,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/check" element={<CheckPage />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/register" element={user ? <Home /> : <Register />} />
         <Route path="/login" element={user ? <Home /> : <Login />} />
       </Routes>

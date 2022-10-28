@@ -17,7 +17,7 @@ const AboutUs = () => {
           Learn more
         </button>
       </div>
-      <div className="flex gap-[60px] items-center">
+      <div className="flex gap-[60px] justify-center items-center">
         <div className="grid grid-cols-2 text-start gap-x-[63px] gap-y-[82px] flex-1">
           <div className="flex flex-col gap-3">
             <h1 className="text-[50px] font-extrabold text-bg pb-3">1.</h1>
@@ -60,7 +60,7 @@ const AboutUs = () => {
           </div>
         </div>
         <div className="flex w-full h-full flex-1 pt-5">
-          <img src={aboutus} alt="" />
+          <img src={aboutus} alt="" className="w-full h-full" />
         </div>
       </div>
     </div>

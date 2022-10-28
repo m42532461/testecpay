@@ -29,7 +29,12 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center px-24 py-10">
-      <div className="text-xl text-[#244D4D] font-semibold">furni.shop</div>
+      <div
+        className="cursor-pointer text-xl text-[#244D4D] font-semibold"
+        onClick={() => navigate("/")}
+      >
+        furni.shop
+      </div>
       <div className="flex gap-20 text-[#242424] font-medium text-lg">
         <a href="Home" onClick={() => navigate("/")}>
           Home
