@@ -17,16 +17,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/check" element={<CheckPage />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/register" element={user ? <Home /> : <Register />} />
-        <Route path="/login" element={user ? <Home /> : <Login />} />
-      </Routes>
+      <div className="flex flex-col justify-center items-center">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={user ? <Cart /> : <Login />} />
+          <Route path="/check" element={user ? <CheckPage /> : <Login />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/register" element={user ? <Home /> : <Register />} />
+          <Route path="/login" element={user ? <Home /> : <Login />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
