@@ -10,15 +10,21 @@ import Shop from "./pages/Shop";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
 import ProductPage from "./pages/ProductPage";
+import Modal from "./components/Modal";
+import { useState } from "react";
+import Footer from "./components/Footer";
 function App() {
   // const user = JSON.parse(localStorage.getItem("profile"));
   const { authData } = useSelector((state) => state.auth);
   const user = authData;
 
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <BrowserRouter>
       <div className="flex flex-col justify-center items-center">
-        <Navbar />
+        <Modal showModal={showModal} closeModal={setShowModal} />
+        <Navbar showModal={showModal} closeModal={setShowModal} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={user ? <Cart /> : <Login />} />
@@ -28,6 +34,7 @@ function App() {
           <Route path="/register" element={user ? <Home /> : <Register />} />
           <Route path="/login" element={user ? <Home /> : <Login />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );

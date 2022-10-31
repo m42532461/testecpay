@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import Product from "../components/Product";
 import products from "../dumbData";
@@ -17,6 +17,10 @@ const ProductPage = () => {
     "https://images.unsplash.com/photo-1580152213601-87df3d2c56e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
   ];
   const [choosenImage, setChoosenImage] = useState(chair1);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleAddToCart = (e) => {
     e.preventDefault();

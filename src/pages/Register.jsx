@@ -17,28 +17,28 @@ const Register = () => {
     dispatch(signup({ email, password, firstName, lastName }, navigate));
   };
   return (
-    <div className="w-[1440px] px-24 flex justify-center ">
+    <div className="w-[1440px] px-24 flex justify-center pb-24">
       <div className="flex flex-col justify-center items-center p-10 mt-20 border border-bg border-[10px] rounded-[10px] text-bg w-[400px] text-[24px]">
         <h1 className="pb-10 font-bold">Register</h1>
         <div className="flex flex-col gap-5">
           <input
             type="email"
-            placeholder="email"
+            placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
-            placeholder="password"
+            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
             type="text"
-            placeholder="first name"
+            placeholder="First name"
             onChange={(e) => setFirstName(e.target.value)}
           />
           <input
             type="text"
-            placeholder="last name"
+            placeholder="Last name"
             onChange={(e) => setLastName(e.target.value)}
           />
           <button

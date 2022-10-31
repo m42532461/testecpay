@@ -41,7 +41,7 @@ const links = [
 ];
 const Footer = () => {
   return (
-    <div className="bg-bg text-white flex flex-col px-24">
+    <div className="bg-bg text-white hidden xl:flex flex-col px-24">
       <div className="flex justify-between pt-[120px] pb-[75px] w-full items-center border-b-[1px] border-white">
         <h1 className="text-[45px] leading-[60px] max-w-[60%] text-start">
           Start your business today for $0+ state fees.

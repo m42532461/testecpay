@@ -16,24 +16,24 @@ const Home = () => {
 
   return (
     <div className="App w-full  relative">
-      <div className="flex pb-[92px] h-full">
-        <div className="pl-[136px] pr-[110px] pt-10 flex-0.8">
-          <img src={DOTS} alt="" className="w-full" />
-        </div>
-        <div className="w-full flex-[6]">
-          <img src={MainImg} alt="" className=" object-fill w-full" />
-        </div>
-        <div className="absolute top-[45px] z-0">
-          <div className="w-[570px] h-[470px] px-24 py-20 gap-[30px] absolute top-[45px] z-10 flex flex-col">
-            <h1 className="text-[#244D4D] text-[54px] leading-[72px] font-extrabold relative z-10 text-start">
+      <div className="flex flex-col xl:flex-row pb-[92px] h-full">
+        <div className="block xl:absolute top-[45px] z-0">
+          <div className="w-full xl:w-[570px] h-full xl:h-[470px] px-10 xl:px-24 pb-10 xl:py-20 gap-[30px] xl:absolute top-[45px] z-10 flex flex-col">
+            <h1 className="text-[#244D4D] text-[36px] xl:text-[54px] leading-[45px] xl:leading-[72px] font-extrabold relative z-10 text-start">
               We Help You Make Modern Interior
             </h1>
-            <span className="text-[#5F5F64] text-[20px] leading-[30px] font-normal relative z-10 text-start">
+            <span className="text-[#5F5F64] text-[14px] xl:text-[20px] leading-[20px] xl:leading-[30px] font-normal relative z-10 text-start">
               We will help you to make an elegant and luxurious interior
               designed by professional interior designer.
             </span>
           </div>
-          <div className="w-[570px] h-[470px] opacity-40 bg-white absolute top-[45px] z-0"></div>
+          <div className="w-[570px] h-[470px] opacity-40 bg-white hidden xl:absolute top-[45px] z-0"></div>
+        </div>
+        <div className="hidden xl:block pl-[136px] pr-[110px] pt-10 flex-0.8">
+          <img src={DOTS} alt="" className="w-full" />
+        </div>
+        <div className="w-full flex-[6]">
+          <img src={MainImg} alt="" className=" object-fill w-full" />
         </div>
         <div className="w-24 h-full flex flex-col justify-center items-center gap-10 my-auto">
           <AiOutlineUp />
@@ -43,12 +43,11 @@ const Home = () => {
           <div className="">{"06"}</div>
         </div>
       </div>
-      <Brand />
+      {/* <Brand />
       <Deal />
       <AboutUs />
       <Products />
-      <Footer />
-      <button onClick={() => navigate("/shop")}>Go Shopping</button>
+      <button onClick={() => navigate("/shop")}>Go Shopping</button> */}
     </div>
   );
 };

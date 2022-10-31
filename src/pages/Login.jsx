@@ -17,8 +17,8 @@ const Login = () => {
     dispatch(signin({ email, password }, navigate));
   };
   return (
-    <div className="w-[1440px] px-24 flex justify-center ">
-      <div className="flex flex-col justify-center items-center p-10 mt-20 border border-bg border-[10px] rounded-[10px] text-bg w-[400px] text-[24px]">
+    <div className="w-[1440px] px-24 flex justify-center pb-24">
+      <div className="flex flex-col justify-center items-center p-10 mt-20 border-bg border-[10px] rounded-[10px] text-bg w-[400px] text-[24px]">
         <div className="flex pb-10">
           <h1 className="font-bold">Login</h1>
         </div>
@@ -35,7 +35,7 @@ const Login = () => {
           />
           <button
             onClick={handleSubmit}
-            className="text-[18px] mt-10 px-10 py-3 border border-bg border-[3px] hover:bg-bg hover:text-white rounded-full"
+            className="text-[18px] mt-10 px-10 py-3 border-bg border-[3px] hover:bg-bg hover:text-white rounded-full"
           >
             Submit
           </button>
