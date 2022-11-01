@@ -11,13 +11,23 @@ import {
 } from "../constants/actionTypes";
 
 export const addToCart =
-  (title, price, id, quantity = 1) =>
+  (title, price, id, discountPrice, img, quantity = 1) =>
   async (dispatch) => {
     try {
       dispatch({ type: START_LOADING });
 
-      dispatch({ type: ADD_TO_CART, payload: { title, price, id, quantity } });
-      const { data } = await api.addToCart({ title, price, id, quantity });
+      dispatch({
+        type: ADD_TO_CART,
+        payload: { title, price, id, img, quantity },
+      });
+      const { data } = await api.addToCart({
+        title,
+        price,
+        id,
+        img,
+        quantity,
+        discountPrice,
+      });
 
       dispatch({ type: END_LOADING });
     } catch (error) {

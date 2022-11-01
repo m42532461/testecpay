@@ -25,7 +25,9 @@ const Cart = () => {
   };
   const handleClick = (mode, item) => {
     if (mode === "up") {
-      dispatch(addToCart(item.title, item.price, item.id));
+      dispatch(
+        addToCart(item.title, item.price, item.discountPrice, item.id, item.img)
+      );
     } else {
       dispatch(removeFromCart(item.title, item.price, item.id));
     }
@@ -36,26 +38,9 @@ const Cart = () => {
     <div className="w-full flex flex-col items-center mt-24">
       <div className="w-[1440px] flex flex-col px-24 pb-40">
         <h1 className="text-[30px] font-bold">Shopping Cart</h1>
-        {items && (
-          <ul>
-            {items?.map((item) => (
-              <li key={item._id}>
-                <p>
-                  <span>{item.title}</span>
-                  <span>${item.price}</span>
-                </p>
-                <p>
-                  <button onClick={() => handleClick("down", item)}>-</button>
-                  <span>數量:{item.quantity}</span>
-                  <button onClick={() => handleClick("up", item)}>+</button>
-                </p>
-              </li>
-            ))}
-          </ul>
-        )}
         {
           <ul className="flex flex-col gap-20 mt-24 justify-center">
-            {products?.map((product) => (
+            {items?.map((product) => (
               <li key={product._id} className="flex gap-20 border-b-2 pb-10">
                 <div className=" flex items-center justify-center">
                   <img
@@ -76,19 +61,26 @@ const Cart = () => {
                   </div>
                   <div className="flex justify-between items-center h-[40px]">
                     <div className="text-[20px] gap-10 flex">
-                      <span>${product.price}</span>
+                      <span>
+                        $
+                        {product.discountPrice
+                          ? product.discountPrice
+                          : product.price}
+                      </span>
                       <div className="flex gap-2">
                         <button onClick={() => handleClick("down", product)}>
                           -
                         </button>
-                        <span className="border px-2 rounded-[5px]">{1}</span>
+                        <span className="border px-2 rounded-[5px]">
+                          {product.quantity}
+                        </span>
                         <button onClick={() => handleClick("up", product)}>
                           +
                         </button>
                       </div>
                     </div>
                     <span className="text-[20px] bg-bg px-10 py-2 text-white rounded-sm">
-                      ${product.price}
+                      ${product.price * product.quantity}
                     </span>
                   </div>
                 </div>
@@ -109,7 +101,7 @@ const Cart = () => {
           </div>
           <div className="flex flex-col gap-3 items-center text-[24px]">
             <div className="border-b pb-4 w-full justify-center flex">
-              <p className="font-extrabold">Total: ${1234}</p>
+              <p className="font-extrabold">Total: ${total}</p>
             </div>
             <button
               className="px-32 bg-white text-bg py-4"

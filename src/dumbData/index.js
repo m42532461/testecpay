@@ -16,7 +16,7 @@ const products = [
     id: "product1",
   },
   {
-    title: "Vintage Chair",
+    title: "Vintage Chair2",
     price: 95,
     discountPrice: 65,
     img: product2,

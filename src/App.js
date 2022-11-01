@@ -8,17 +8,25 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Shop from "./pages/Shop";
 import Navbar from "./components/Navbar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProductPage from "./pages/ProductPage";
 import Modal from "./components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
+import { getAllProduct } from "./action/products";
+import { GET_ALL_PRODUCTS } from "./constants/actionTypes";
 function App() {
   // const user = JSON.parse(localStorage.getItem("profile"));
   const { authData } = useSelector((state) => state.auth);
-  const user = authData;
+  const { products } = useSelector((state) => state.products);
+  const user = JSON.parse(localStorage.getItem("profile"));
+
+  const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    dispatch(getAllProduct());
+  }, []);
 
   return (
     <BrowserRouter>

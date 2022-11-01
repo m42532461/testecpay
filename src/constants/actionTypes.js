@@ -19,3 +19,5 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const IMPORT_CART_FROM_DB = "IMPORT_CART_FROM_DB";
 export const CLEAR_CART = "CLEAR_CART";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
+
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";

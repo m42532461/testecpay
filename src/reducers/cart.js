@@ -31,7 +31,6 @@ export default (
   let temp;
   switch (action.type) {
     case START_LOADING:
-      console.log("START_LOADING");
       return { ...state, isLoading: true };
     case END_LOADING:
       return { ...state, isLoading: false };

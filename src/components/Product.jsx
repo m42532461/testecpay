@@ -2,12 +2,15 @@ import React from "react";
 import product1 from "../assets/product1.png";
 import { BsCart3 } from "react-icons/bs";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../action/cart";
 const Product = ({ title, price, discountPrice, img, id }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    console.log(id);
+    dispatch(addToCart(title, price, discountPrice, id, img));
   };
 
   return (

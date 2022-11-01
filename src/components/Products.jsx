@@ -1,7 +1,12 @@
 import React from "react";
 import Product from "./Product";
-import products from "../dumbData/index";
+import productsFromDumb from "../dumbData/index";
+import { useSelector } from "react-redux";
+
 const Products = () => {
+  const { products } = useSelector((state) => state.products);
+
+  console.log(products);
   return (
     <div className="flex flex-col px-24 pb-10 pt-[50px]">
       <div className="flex justify-between items-between">
@@ -24,6 +29,7 @@ const Products = () => {
               discountPrice={product.discountPrice}
               img={product.img}
               id={product.id}
+              key={product.id}
             />
           ))}
         </div>

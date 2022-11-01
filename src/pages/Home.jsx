@@ -43,11 +43,11 @@ const Home = () => {
           <div className="">{"06"}</div>
         </div>
       </div>
-      {/* <Brand />
+      <Brand />
       <Deal />
       <AboutUs />
       <Products />
-      <button onClick={() => navigate("/shop")}>Go Shopping</button> */}
+      <button onClick={() => navigate("/shop")}>Go Shopping</button>
     </div>
   );
 };

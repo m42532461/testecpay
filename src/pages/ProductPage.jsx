@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
+import { addToCart } from "../action/cart";
 import Product from "../components/Product";
 import products from "../dumbData";
 const ProductPage = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
+  const theProduct = products.find((pro) => pro.id === id);
   const navigate = useNavigate();
-  const [plant1, plant2, plant3] = [
-    "https://images.unsplash.com/photo-1512428813834-c702c7702b78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit",
-    "https://images.unsplash.com/photo-1511881346740-60bcc5769e35?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit",
-    "https://images.unsplash.com/photo-1512428735642-908dea4257ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit",
-  ];
+  const dispatch = useDispatch();
+
   const [chair1, chair2, chair3] = [
     "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1987&q=80",
     "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
@@ -24,10 +24,9 @@ const ProductPage = () => {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    console.log(id);
+    dispatch(addToCart(theProduct.title, theProduct.price, theProduct.id));
   };
-  console.log(id);
-  const theProduct = products.find((pro) => pro.id === id);
+
   const { title, discountPrice, price, img, desc } = theProduct;
   return (
     <div className="flex flex-col px-24">
@@ -74,7 +73,10 @@ const ProductPage = () => {
                 : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure dicta officiis quae. Voluptate iste amet incidunt hic exercitationem, eveniet soluta magni pariatur, ipsum mollitia voluptatem ipsam ab itaque cumque nostrum."}
             </p>
           </div>
-          <button className="bg-[#3e3e3f] text-white py-5 px-10">
+          <button
+            className="bg-[#3e3e3f] text-white py-5 px-10"
+            onClick={handleAddToCart}
+          >
             ADD TO CART
           </button>
         </div>

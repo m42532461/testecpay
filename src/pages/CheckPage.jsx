@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import products from "../dumbData/index";
 
 const CheckPage = () => {
-  const { items, orderCode, total } = useSelector((state) => state.cart);
+  const { items, orderCode, quantity, total } = useSelector(
+    (state) => state.cart
+  );
   const handleClick = (e) => {
     e.preventDefault();
     // X option1: 再次送所有資料至後端(call checkout的api)
@@ -26,7 +28,7 @@ const CheckPage = () => {
         <div className="flex-1 w-full flex flex-col ">
           {
             <ul className="flex flex-col gap-20  justify-center">
-              {products?.map((product) => (
+              {items?.map((product) => (
                 <li key={product._id} className="flex gap-20 border-b-2 pb-10">
                   <div className=" flex items-center justify-center">
                     <img
@@ -44,10 +46,12 @@ const CheckPage = () => {
                     <div className="text-[20px] gap-10 flex justify-between items-center">
                       <div className="gap-10  flex">
                         <span>${product.price}</span>
-                        <span className="border px-2 rounded-[5px]">{1}</span>
+                        <span className="border px-2 rounded-[5px]">
+                          {product.quantity}
+                        </span>
                       </div>
                       <span className="text-[20px] bg-bg px-10 py-2 text-white rounded-sm">
-                        ${product.price}
+                        ${product.price * product.quantity}
                       </span>
                     </div>
                   </div>
@@ -60,14 +64,14 @@ const CheckPage = () => {
         <div className="flex-1 w-full flex flex-col items-end text-white">
           <div className="bg-bg w-[400px] h-[700px] flex justify-center items-center rounded-xl">
             <div className="flex w-full flex-col  gap-10 text-[20px] p-10">
-              <p>共有{2}件商品</p>
+              <p>共有{quantity}件商品</p>
               <p>
                 運費: $<span className="line-through">60</span>
               </p>
 
               <p className="text-[24px] font-semibold">小記:${total}</p>
               <div className="border-b pb-4 w-full justify-center flex pt-4">
-                <p className="font-extrabold">Total: ${1234}</p>
+                <p className="font-extrabold">Total: ${total}</p>
               </div>
 
               <form
