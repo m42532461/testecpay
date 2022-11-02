@@ -11,14 +11,14 @@ import {
 } from "../constants/actionTypes";
 
 export const addToCart =
-  (title, price, id, discountPrice, img, quantity = 1) =>
+  (title, price, discountPrice, id, img, quantity = 1) =>
   async (dispatch) => {
     try {
       dispatch({ type: START_LOADING });
 
       dispatch({
         type: ADD_TO_CART,
-        payload: { title, price, id, img, quantity },
+        payload: { title, price, discountPrice, id, img, quantity },
       });
       const { data } = await api.addToCart({
         title,
@@ -35,22 +35,19 @@ export const addToCart =
     }
   };
 export const removeFromCart =
-  (title, price, id, quantity = 1) =>
+  (title, price, discountPrice, id, img, quantity = 1) =>
   async (dispatch) => {
-    console.log(title);
-    console.log(price);
-    console.log(id);
-    console.log(quantity);
     try {
       dispatch({ type: START_LOADING });
 
       dispatch({
         type: DELETE_FROM_CART,
-        payload: { title, price, id, quantity },
+        payload: { title, price, discountPrice, id, quantity },
       });
       const { data } = await api.removeFromCart({
         title,
         price,
+        discountPrice,
         id,
         quantity,
       });

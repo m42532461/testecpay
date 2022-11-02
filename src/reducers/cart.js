@@ -59,7 +59,9 @@ export default (
         temp.quantity += 1;
         temp.items.push(action.payload);
       }
-      temp.total += action.payload.price * action.payload.quantity;
+      action.payload.discountPrice
+        ? (temp.total += action.payload.discountPrice * action.payload.quantity)
+        : (temp.total += action.payload.price * action.payload.quantity);
       console.log(temp);
       return temp;
     case IMPORT_CART_FROM_DB:
@@ -79,7 +81,10 @@ export default (
           temp.items.splice(index, 1);
           temp.quantity -= 1;
         }
-        temp.total -= action.payload.price * action.payload.quantity;
+        action.payload.discountPrice
+          ? (temp.total -=
+              action.payload.discountPrice * action.payload.quantity)
+          : (temp.total -= action.payload.price * action.payload.quantity);
       }
       return temp;
     default:

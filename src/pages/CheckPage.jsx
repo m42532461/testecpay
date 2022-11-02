@@ -45,13 +45,21 @@ const CheckPage = () => {
                     </div>
                     <div className="text-[20px] gap-10 flex justify-between items-center">
                       <div className="gap-10  flex">
-                        <span>${product.price}</span>
+                        <span>
+                          $
+                          {product.discountPrice
+                            ? product.discountPrice
+                            : product.price}
+                        </span>
                         <span className="border px-2 rounded-[5px]">
                           {product.quantity}
                         </span>
                       </div>
                       <span className="text-[20px] bg-bg px-10 py-2 text-white rounded-sm">
-                        ${product.price * product.quantity}
+                        $
+                        {product.discountPrice
+                          ? product.discountPrice * product.quantity
+                          : product.price * product.quantity}
                       </span>
                     </div>
                   </div>

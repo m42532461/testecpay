@@ -18,16 +18,17 @@ const ProductPage = () => {
   ];
   const [choosenImage, setChoosenImage] = useState(chair1);
 
+  const { title, discountPrice, price, img, desc } = theProduct;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    dispatch(addToCart(theProduct.title, theProduct.price, theProduct.id));
+    dispatch(addToCart(title, price, discountPrice, id, img));
   };
 
-  const { title, discountPrice, price, img, desc } = theProduct;
   return (
     <div className="flex flex-col px-24">
       <div className="py-2 px-4 text-[13.6px] text-[#888] mt-4">

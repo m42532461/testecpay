@@ -29,7 +29,15 @@ const Cart = () => {
         addToCart(item.title, item.price, item.discountPrice, item.id, item.img)
       );
     } else {
-      dispatch(removeFromCart(item.title, item.price, item.id));
+      dispatch(
+        removeFromCart(
+          item.title,
+          item.price,
+          item.discountPrice,
+          item.id,
+          item.img
+        )
+      );
     }
     // dispatch(makeOrder(items));
   };
@@ -41,7 +49,7 @@ const Cart = () => {
         {
           <ul className="flex flex-col gap-20 mt-24 justify-center">
             {items?.map((product) => (
-              <li key={product._id} className="flex gap-20 border-b-2 pb-10">
+              <li key={product.id} className="flex gap-20 border-b-2 pb-10">
                 <div className=" flex items-center justify-center">
                   <img
                     src={product.img}
@@ -80,7 +88,10 @@ const Cart = () => {
                       </div>
                     </div>
                     <span className="text-[20px] bg-bg px-10 py-2 text-white rounded-sm">
-                      ${product.price * product.quantity}
+                      $
+                      {product.discountPrice
+                        ? product.discountPrice * product.quantity
+                        : product.price * product.quantity}
                     </span>
                   </div>
                 </div>

@@ -18,7 +18,7 @@ const Register = () => {
   };
   return (
     <div className="w-[1440px] px-24 flex justify-center pb-24">
-      <div className="flex flex-col justify-center items-center p-10 mt-20 border border-bg border-[10px] rounded-[10px] text-bg w-[400px] text-[24px]">
+      <div className="flex flex-col justify-center items-center p-10 mt-20 border-bg border-[10px] rounded-[10px] text-bg w-[400px] text-[24px]">
         <h1 className="pb-10 font-bold">Register</h1>
         <div className="flex flex-col gap-5">
           <input
@@ -42,7 +42,7 @@ const Register = () => {
             onChange={(e) => setLastName(e.target.value)}
           />
           <button
-            className="text-[18px] mt-10 px-10 py-3 border border-bg border-[3px] hover:bg-bg hover:text-white rounded-full"
+            className="text-[18px] mt-10 px-10 py-3 border-bg border-[3px] hover:bg-bg hover:text-white rounded-full"
             onClick={handleSubmit}
           >
             Submit
