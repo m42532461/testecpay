@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import { getAllProduct } from "./action/products";
 import { GET_ALL_PRODUCTS } from "./constants/actionTypes";
+import TestPage from "./pages/TestPage";
 function App() {
   // const user = JSON.parse(localStorage.getItem("profile"));
   const { authData } = useSelector((state) => state.auth);
@@ -41,6 +42,7 @@ function App() {
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/register" element={user ? <Home /> : <Register />} />
           <Route path="/login" element={user ? <Home /> : <Login />} />
+          <Route path="/test" element={<TestPage />} />
         </Routes>
         <Footer />
       </div>
