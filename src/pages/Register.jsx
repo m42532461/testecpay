@@ -1,5 +1,6 @@
+import { CircularProgress } from "@material-ui/core";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signup } from "../action/auth";
 
@@ -8,6 +9,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const { isLoading } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,11 +44,16 @@ const Register = () => {
             onChange={(e) => setLastName(e.target.value)}
           />
           <button
-            className="text-[18px] mt-10 px-10 py-3 border-bg border-[3px] hover:bg-bg hover:text-white rounded-full"
             onClick={handleSubmit}
+            disabled={isLoading}
+            className={`text-[18px] mt-10 px-10 py-3 border-bg border-[3px] hover:bg-bg hover:text-white rounded-full ${
+              isLoading ? "hover:bg-gray-400 bg-gray-400 border-gray-600" : ""
+            }`}
           >
             Submit
           </button>
+
+          {isLoading && <CircularProgress />}
         </div>
       </div>
     </div>

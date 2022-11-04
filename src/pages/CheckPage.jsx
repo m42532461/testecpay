@@ -1,11 +1,15 @@
+import { CircularProgress } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCartFromDB } from "../action/cart";
 import products from "../dumbData/index";
 
 const CheckPage = () => {
-  const { items, orderCode, quantity, total } = useSelector(
+  const { items, orderCode, quantity, total, isLoading } = useSelector(
     (state) => state.cart
   );
+  const dispatch = useDispatch();
+
   const handleClick = (e) => {
     e.preventDefault();
     // X option1: 再次送所有資料至後端(call checkout的api)
@@ -16,6 +20,9 @@ const CheckPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (items?.length === 0) {
+      dispatch(fetchCartFromDB());
+    }
   }, []);
 
   return (
@@ -26,7 +33,9 @@ const CheckPage = () => {
       <div className="flex w-full mt-24">
         {/* 左邊 */}
         <div className="flex-1 w-full flex flex-col ">
-          {
+          {isLoading ? (
+            <CircularProgress />
+          ) : (
             <ul className="flex flex-col gap-20  justify-center">
               {items?.map((product) => (
                 <li key={product._id} className="flex gap-20 border-b-2 pb-10">
@@ -66,7 +75,7 @@ const CheckPage = () => {
                 </li>
               ))}
             </ul>
-          }
+          )}
         </div>
         {/* 右邊 */}
         <div className="flex-1 w-full flex flex-col items-end text-white">
@@ -83,7 +92,7 @@ const CheckPage = () => {
               </div>
 
               <form
-                action={`http://localhost:5000/ecpay?orderCode=${orderCode}`}
+                action={`https://ecommerce-ecpay.onrender.com/ecpay/checkout?orderCode=${orderCode}`}
                 method="POST"
               >
                 <input

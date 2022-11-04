@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
 import { addToCart } from "../action/cart";
-import Product from "../components/Product";
-import products from "../dumbData";
+import { getAllProduct } from "../action/products";
 const ProductPage = () => {
   const location = useLocation();
+  const { products } = useSelector((state) => state.products);
   const id = location.pathname.split("/")[2];
   const theProduct = products.find((pro) => pro.id === id);
   const navigate = useNavigate();
@@ -22,6 +22,9 @@ const ProductPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (products.length === 0) {
+      dispatch(getAllProduct());
+    }
   }, []);
 
   const handleAddToCart = (e) => {

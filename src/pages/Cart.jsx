@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeOrder } from "../action/payment";
 import { addToCart, fetchCartFromDB, removeFromCart } from "../action/cart";
 import products from "../dumbData/index";
+import { CircularProgress } from "@material-ui/core";
 const Cart = () => {
-  const { items, quantity, total } = useSelector((state) => state.cart);
+  const { items, quantity, total, isLoading } = useSelector(
+    (state) => state.cart
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -46,7 +49,10 @@ const Cart = () => {
     <div className="w-full flex flex-col items-center mt-24">
       <div className="w-[1440px] flex flex-col px-24 pb-40">
         <h1 className="text-[30px] font-bold">Shopping Cart</h1>
-        {
+
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
           <ul className="flex flex-col gap-20 mt-24 justify-center">
             {items?.map((product) => (
               <li key={product.id} className="flex gap-20 border-b-2 pb-10">
@@ -98,7 +104,7 @@ const Cart = () => {
               </li>
             ))}
           </ul>
-        }
+        )}
       </div>
       <div className="bg-bg w-full flex justify-center">
         <div className="w-[1440px] flex justify-between items-center text-white px-24 py-20">
