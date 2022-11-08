@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AboutUs from "../components/AboutUs";
 import Brand from "../components/Brand";
@@ -10,13 +10,26 @@ import { MainImg, DOTS } from "../assets";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import * as actionType from "../constants/actionTypes";
 const Home = () => {
+  const { products } = useSelector((state) => state.products);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [displace, setDisplace] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleSlider = (direction) => {
+    if (direction === "up") {
+      if (displace >= 5) setDisplace(0);
+      else setDisplace((prev) => prev + 1);
+    } else {
+      if (displace <= 0) setDisplace(5);
+      else setDisplace((prev) => prev - 1);
+    }
+  };
+  console.log(displace);
+
   return (
     <div className="App w-full relative flex flex-col items-center">
-      <div className="flex flex-col  xl:flex-row xl:pb-[92px] h-full">
+      <div className="flex flex-col  xl:flex-row xl:pb-[92px] h-full" id="home">
         <div className="block xl:absolute top-[45px] z-0">
           <div className="w-full xl:w-[570px] h-full xl:h-[470px] px-10 xl:px-24 pb-10 xl:py-20 gap-[30px] xl:absolute top-[45px] z-10 flex flex-col">
             <h1 className="text-[#244D4D] text-[36px] xl:text-[54px] leading-[45px] xl:leading-[72px] font-extrabold relative z-10 text-start">
@@ -27,17 +40,64 @@ const Home = () => {
               designed by professional interior designer.
             </span>
           </div>
-          <div className="w-[570px] h-[470px] opacity-40 bg-white hidden xl:absolute top-[45px] z-0"></div>
+          <div className="w-[570px] h-[470px] opacity-40 bg-white hidden xl:block absolute top-[45px] z-0"></div>
         </div>
         <div className="hidden xl:block pl-[136px] pr-[110px] pt-10 flex-0.8">
           <img src={DOTS} alt="" className="w-full" />
         </div>
-        <div className="w-full flex-[6]">
-          <img src={MainImg} alt="" className=" object-fill w-full" />
+        <div className=" flex-[6] h-[255px] xl:h-[700px] xl:w-[991px] overflow-hidden static z-[-10]">
+          <div
+            className={`-translate-y-[${
+              700 * displace
+            }px] w-full h-[255px] xl:h-full ease-linear duration-1000`}
+          >
+            <div className="w-full xl:h-[700px]  flex items-center">
+              <img
+                src={MainImg}
+                alt=""
+                className=" object-cover xl:h-[700px] w-full "
+              />
+            </div>
+            <div className="w-full xl:h-[700px]  hidden xl:flex items-center">
+              <img
+                src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt=""
+                className=" object-cover xl:h-[700px] w-full"
+              />
+            </div>
+            <div className="w-full xl:h-[700px]  hidden xl:flex items-center">
+              <img
+                src="https://images.unsplash.com/photo-1632829882891-5047ccc421bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
+                alt=""
+                className=" object-cover xl:h-[700px] w-full"
+              />
+            </div>
+            <div className="w-full xl:h-[700px]  hidden xl:flex items-center">
+              <img
+                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
+                alt=""
+                className=" object-cover xl:h-[700px] w-full"
+              />
+            </div>
+            <div className="w-full xl:h-[700px]  hidden xl:flex items-center">
+              <img
+                src="https://images.unsplash.com/photo-1558442086-8ea19a79cd4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2662&q=80"
+                alt=""
+                className=" object-cover xl:h-[700px] w-full"
+              />
+            </div>
+            <div className="w-full xl:h-[700px]  hidden xl:flex items-center">
+              <img
+                src="https://images.unsplash.com/photo-1586208958839-06c17cacdf08?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2765&q=80"
+                alt=""
+                className=" object-cover xl:h-[700px] w-full"
+              />
+            </div>
+          </div>
         </div>
         <div className="hidden xl:flex w-24 h-full  flex-col justify-center items-center gap-10 my-auto">
-          <AiOutlineUp />
-          <AiOutlineDown />
+          <AiOutlineUp onClick={() => handleSlider("down")} />
+          <AiOutlineDown onClick={() => handleSlider("up")} />
           <div className="">{"01"}</div>
           <div className="">{"|"}</div>
           <div className="">{"06"}</div>
@@ -46,7 +106,7 @@ const Home = () => {
       <Brand />
       <Deal />
       <AboutUs />
-      <Products />
+      <Products products={products} />
       <Footer />
     </div>
   );

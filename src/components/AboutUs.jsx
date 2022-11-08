@@ -2,7 +2,10 @@ import React from "react";
 import aboutus from "../assets/aboutus.png";
 const AboutUs = () => {
   return (
-    <div className="flex flex-col px-10 xl:px-24 pb-20 xl:w-[1440px]">
+    <div
+      className="flex flex-col px-10 xl:px-24 pb-20 xl:w-[1440px]"
+      id="about"
+    >
       <div className="flex flex-col xl:flex-row gap-20 xl:gap-0 justify-between items-center pb-20">
         <div className="flex flex-col gap-10 text-start">
           <h1 className="text-[36px] xl:text-[50px] leading-[76px] font-bold text-bg">

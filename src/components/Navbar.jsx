@@ -42,26 +42,26 @@ const Navbar = ({ closeModal }) => {
       <div className="hidden xl:flex text-[#242424] font-medium text-lg">
         <a
           className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
-          href="home"
+          href="#home"
           onClick={() => navigate("/")}
         >
           Home
         </a>
         <a
           className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
-          href="about"
+          href="#about"
         >
           About
         </a>
         <a
           className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
-          href="features"
+          href="#products"
         >
-          Features
+          Products
         </a>
         <a
           className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
-          href="contact"
+          href="#contact"
         >
           Contact
         </a>

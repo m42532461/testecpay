@@ -41,7 +41,10 @@ const links = [
 ];
 const Footer = () => {
   return (
-    <div className="bg-bg text-white flex flex-col px-10 xl:px-24 w-full items-center">
+    <div
+      className="bg-bg text-white flex flex-col px-10 xl:px-24 w-full items-center"
+      id="contact"
+    >
       <div className="flex flex-col xl:flex-row justify-between py-[60px] xl:pt-[120px] xl:pb-[75px] w-full items-center border-b-[1px] border-white gap-10 max-w-[1440px]">
         <h1 className="text-[30px] xl:text-[45px] leading-[45px] xl:leading-[60px] max-w-[80%] xl:max-w-[60%] text-start">
           Start your business today for $0+ state fees.

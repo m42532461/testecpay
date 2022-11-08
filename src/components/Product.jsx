@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import product1 from "../assets/product1.png";
 import { BsCart3 } from "react-icons/bs";
 import { useNavigate } from "react-router";
@@ -7,10 +7,12 @@ import { addToCart } from "../action/cart";
 const Product = ({ title, price, discountPrice, img, id }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    dispatch(addToCart(title, price, discountPrice, id, img));
+    if (user) dispatch(addToCart(title, price, discountPrice, id, img));
+    else navigate("/login");
   };
 
   return (

@@ -33,7 +33,7 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="flex flex-col px-24">
+    <div className="flex flex-col px-24 w-[1440px]">
       <div className="py-2 px-4 text-[13.6px] text-[#888] mt-4">
         Home/Category/ <span className="text-[#333]">{title}</span>
       </div>
@@ -86,10 +86,10 @@ const ProductPage = () => {
         </div>
       </div>
       <div className="">
-        <div className="p-4 ">
+        <div className="p-4">
           <h1 className="mt-7 mb-4 leading-6 text-[32px]">You may also like</h1>
         </div>
-        <div className="flex justify-center gap-10">
+        <div className="flex justify-between gap-10">
           <div className="flex flex-col">
             <img
               className=" w-[357px] h-[238px] object-cover "

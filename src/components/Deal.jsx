@@ -14,7 +14,7 @@ const Deal = () => {
           Online shopping for retail sales direct to consumers
         </p>
       </div>
-      <div className="flex flex-wrap xl:flex-none gap-[60px] xl:gap-[120px] w-full">
+      <div className="flex flex-wrap xl:flex-none gap-[60px] xl:gap-[120px]">
         <div className="flex flex-col gap-6 max-w-[188px]">
           <img src={icon1} className="w-[32px] h-[35px] " alt="" />
           <h1 className="text-[20px] leading-[28px] font-bold text-[#3d3d3f]">

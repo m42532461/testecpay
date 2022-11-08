@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signup } from "../action/auth";
+import Footer from "../components/Footer";
 import Modal from "../components/Modal";
 import { CLEAR_ERROR } from "../constants/actionTypes";
 
@@ -77,6 +78,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

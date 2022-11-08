@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import { getAllProduct } from "./action/products";
 import { GET_ALL_PRODUCTS } from "./constants/actionTypes";
 import TestPage from "./pages/TestPage";
+import ProductsPage from "./pages/ProductsPage";
 function App() {
   // const user = JSON.parse(localStorage.getItem("profile"));
   const { authData } = useSelector((state) => state.auth);
@@ -50,7 +51,7 @@ function App() {
           <Route path="/register" element={user ? <Home /> : <Register />} />
           <Route path="/login" element={user ? <Home /> : <Login />} />
           <Route path="/test" element={<TestPage />} />
-          <Route path="/products/:category" element={<TestPage />} />
+          <Route path="/products/:category" element={<ProductsPage />} />
         </Routes>
       </div>
     </BrowserRouter>
