@@ -41,8 +41,8 @@ const links = [
 ];
 const Footer = () => {
   return (
-    <div className="bg-bg text-white flex flex-col px-10 xl:px-24">
-      <div className="flex flex-col xl:flex-row justify-between py-[60px] xl:pt-[120px] xl:pb-[75px] w-full items-center border-b-[1px] border-white gap-10">
+    <div className="bg-bg text-white flex flex-col px-10 xl:px-24 w-full items-center">
+      <div className="flex flex-col xl:flex-row justify-between py-[60px] xl:pt-[120px] xl:pb-[75px] w-full items-center border-b-[1px] border-white gap-10 max-w-[1440px]">
         <h1 className="text-[30px] xl:text-[45px] leading-[45px] xl:leading-[60px] max-w-[80%] xl:max-w-[60%] text-start">
           Start your business today for $0+ state fees.
         </h1>
@@ -55,7 +55,7 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-col xl:flex-row  justify-between py-[60px] xl:pt-[90px] xl:pb-[65px] gap-10">
+      <div className="flex flex-col xl:flex-row  justify-between py-[60px] xl:pt-[90px] xl:pb-[65px] gap-10 w-full max-w-[1440px]">
         <div className="text-start gap-[30px] flex flex-col">
           <h1 className="text-[26px] font-bold">furni.shop</h1>
           <p className="text-[#EEEEEE] text-[15px] leading-[27px] xl:max-w-[220px]">

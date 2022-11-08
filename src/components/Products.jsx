@@ -8,7 +8,7 @@ const Products = () => {
 
   console.log(products);
   return (
-    <div className="flex flex-col px-10 xl:px-24 pb-10 pt-[50px]">
+    <div className="flex flex-col px-10 xl:px-24 pb-10 pt-[50px] xl:w-[1440px]">
       <div className="flex justify-between items-between">
         <h1 className="text-[36px] xl:text-[50px] font-semibold text-bg">
           Products
