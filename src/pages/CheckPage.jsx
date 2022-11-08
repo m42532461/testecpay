@@ -26,11 +26,13 @@ const CheckPage = () => {
   }, []);
 
   return (
-    <div className=" flex flex-col items-center w-[1440px] px-24 mt-24">
+    <div className=" flex flex-col items-center xl:w-[1440px] px-10 xl:px-24 mt-10 xl:mt-24 xl:mb-24">
       <div className="flex justify-start w-full">
-        <h1 className="text-[30px] font-bold text-[#333]">再次確認商品</h1>
+        <h1 className="text-[24px] xl:text-[30px] font-bold text-[#333]">
+          再次確認商品
+        </h1>
       </div>
-      <div className="flex w-full mt-24">
+      <div className="flex flex-col-reverse xl:flex-row w-full mt-10 xl:mt-24 gap-20">
         {/* 左邊 */}
         <div className="flex-1 w-full flex flex-col ">
           {isLoading ? (
@@ -38,22 +40,25 @@ const CheckPage = () => {
           ) : (
             <ul className="flex flex-col gap-20  justify-center">
               {items?.map((product) => (
-                <li key={product._id} className="flex gap-20 border-b-2 pb-10">
+                <li
+                  key={product._id}
+                  className="flex gap-10 xl:gap-20 border-b-2 pb-10"
+                >
                   <div className=" flex items-center justify-center">
                     <img
                       src={product.img}
                       alt=""
-                      className="object-contain w-[200px] h-[200px]"
+                      className="object-contain w-[100px] xl:w-[200px] xl:h-[200px]"
                     />
                   </div>
                   <div className="flex flex-col justify-center items-center gap-5">
                     <div className="flex w-full justify-start">
-                      <span className="text-[24px] text-bg">
+                      <span className="text-[18px] xl:text-[24px] text-bg">
                         {product.title}
                       </span>
                     </div>
-                    <div className="text-[20px] gap-10 flex justify-between items-center">
-                      <div className="gap-10  flex">
+                    <div className="text-[14px] xl:text-[20px] gap-10 flex justify-between items-center">
+                      <div className=" gap-2 xl:gap-10 flex">
                         <span>
                           $
                           {product.discountPrice
@@ -64,7 +69,7 @@ const CheckPage = () => {
                           {product.quantity}
                         </span>
                       </div>
-                      <span className="text-[20px] bg-bg px-10 py-2 text-white rounded-sm">
+                      <span className=" bg-bg px-4 xl:px-10 py-1 xl:py-2 text-white rounded-sm">
                         $
                         {product.discountPrice
                           ? product.discountPrice * product.quantity
@@ -79,8 +84,8 @@ const CheckPage = () => {
         </div>
         {/* 右邊 */}
         <div className="flex-1 w-full flex flex-col items-end text-white">
-          <div className="bg-bg w-[400px] h-[700px] flex justify-center items-center rounded-xl">
-            <div className="flex w-full flex-col  gap-10 text-[20px] p-10">
+          <div className="bg-bg w-full xl:w-[400px] h-full xl:h-[700px] flex justify-center items-center rounded-xl">
+            <div className="flex w-full flex-col  gap-10 text-[20px] p-10 py-20 xl:py-10">
               <p>共有{quantity}件商品</p>
               <p>
                 運費: $<span className="line-through">60</span>
@@ -99,7 +104,7 @@ const CheckPage = () => {
                   type="submit"
                   value="Submit"
                   disabled={!orderCode}
-                  className="px-32 bg-white text-bg py-4"
+                  className="px-20 xl:px-32 bg-white text-bg py-4"
                 />
               </form>
             </div>

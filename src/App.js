@@ -32,7 +32,14 @@ function App() {
   return (
     <BrowserRouter>
       <div className="flex flex-col justify-center items-center">
-        <Modal showModal={showModal} closeModal={setShowModal} />
+        <Modal
+          showModal={showModal}
+          closeModal={setShowModal}
+          title="Please Login"
+          p1="Not had membership yet? Register now so we can keep your
+                      items in cart and get your wishlist at any devices."
+          buttonLink="login"
+        />
         <Navbar showModal={showModal} closeModal={setShowModal} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -43,8 +50,8 @@ function App() {
           <Route path="/register" element={user ? <Home /> : <Register />} />
           <Route path="/login" element={user ? <Home /> : <Login />} />
           <Route path="/test" element={<TestPage />} />
+          <Route path="/products/:category" element={<TestPage />} />
         </Routes>
-        <Footer />
       </div>
     </BrowserRouter>
   );

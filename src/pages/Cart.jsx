@@ -46,16 +46,21 @@ const Cart = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center mt-24">
-      <div className="w-[1440px] flex flex-col px-24 pb-40">
-        <h1 className="text-[30px] font-bold">Shopping Cart</h1>
+    <div className="w-full flex flex-col items-center mt-5 xl:mt-24">
+      <div className="xl:w-[1440px] flex flex-col items-center xl:items-start px-10 xl:px-24 pb-10 xl:pb-40">
+        <h1 className="w-full text-start text-[24px] xl:text-[30px] font-bold">
+          Shopping Cart
+        </h1>
 
         {isLoading ? (
           <CircularProgress />
         ) : (
-          <ul className="flex flex-col gap-20 mt-24 justify-center">
+          <ul className="flex flex-col gap-10 xl:gap-20 mt-5 xl:mt-24 justify-center">
             {items?.map((product) => (
-              <li key={product.id} className="flex gap-20 border-b-2 pb-10">
+              <li
+                key={product.id}
+                className="flex xl:gap-20 border-b-2 pb-5 xl:pb-10 items-center gap-10"
+              >
                 <div className=" flex items-center justify-center">
                   <img
                     src={product.img}
@@ -63,18 +68,20 @@ const Cart = () => {
                     className="object-contain w-[200px] h-[200px]"
                   />
                 </div>
-                <div className="flex flex-col w-full h-full gap-5">
-                  <div className="flex flex-col  justify-start border-b-[2px] h-[140px] gap-5">
-                    <span className="text-[24px] text-bg">{product.title}</span>
-                    <span className="text-[#3d3d3f]">
+                <div className="flex flex-col xl:w-full h-full gap-5">
+                  <div className="flex flex-col  justify-start border-b-[2px] xl:h-[140px] gap-5">
+                    <span className="text-[18px] xl:text-[24px] text-bg">
+                      {product.title}
+                    </span>
+                    <span className="hidden xl:block text-[#3d3d3f]">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Iure dicta officiis quae. Voluptate iste amet incidunt hic
                       exercitationem, eveniet soluta magni pariatur, ipsum
                       mollitia voluptatem ipsam ab itaque cumque nostrum.
                     </span>
                   </div>
-                  <div className="flex justify-between items-center h-[40px]">
-                    <div className="text-[20px] gap-10 flex">
+                  <div className="flex justify-between items-center gap-2 h-[40px]">
+                    <div className="text-[14px] xl:text-[20px] gap-2 xl:gap-10 flex">
                       <span>
                         $
                         {product.discountPrice
@@ -93,7 +100,7 @@ const Cart = () => {
                         </button>
                       </div>
                     </div>
-                    <span className="text-[20px] bg-bg px-10 py-2 text-white rounded-sm">
+                    <span className="text-[14px] xl:text-[20px] bg-bg px-4 xl:px-10 py-1 xl:py-2 text-white rounded-sm">
                       $
                       {product.discountPrice
                         ? product.discountPrice * product.quantity
@@ -107,21 +114,23 @@ const Cart = () => {
         )}
       </div>
       <div className="bg-bg w-full flex justify-center">
-        <div className="w-[1440px] flex justify-between items-center text-white px-24 py-20">
-          <div className="flex flex-col gap-10 text-[20px]">
+        <div className="xl:w-[1440px] flex justify-between items-center text-white px-10 xl:px-24 py-20 gap-10">
+          <div className="flex flex-col gap-10 text-[14px] xl:text-[20px]">
             <p>共有{quantity}件商品</p>
             <p>
               運費: $<span className="line-through">60</span>
             </p>
 
-            <p className="text-[24px] font-semibold">小記:${total}</p>
+            <p className="text-[20px] xl:text-[24px] font-semibold">
+              小記:${total}
+            </p>
           </div>
-          <div className="flex flex-col gap-3 items-center text-[24px]">
+          <div className="flex flex-col gap-3 items-center text-[20px] xl:text-[24px]">
             <div className="border-b pb-4 w-full justify-center flex">
               <p className="font-extrabold">Total: ${total}</p>
             </div>
             <button
-              className="px-32 bg-white text-bg py-4"
+              className="px-10 xl:px-32 bg-white text-bg py-2 xl:py-4"
               onClick={handleSubmit}
             >
               結帳

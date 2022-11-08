@@ -21,3 +21,5 @@ export const CLEAR_CART = "CLEAR_CART";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
 
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const ERROR = "ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";

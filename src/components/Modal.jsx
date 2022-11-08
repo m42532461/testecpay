@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-const Modal = ({ showModal, closeModal }) => {
+const Modal = ({
+  showModal,
+  closeModal,
+  title,
+  p1,
+  p2 = "Enjoy Your Trip!!!",
+  buttonLink,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -19,7 +26,7 @@ const Modal = ({ showModal, closeModal }) => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none z-[80]">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">Please Login</h3>
+                  <h3 className="text-3xl font-semibold">{title}</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => closeModal(false)}
@@ -32,14 +39,9 @@ const Modal = ({ showModal, closeModal }) => {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-[#888] text-lg leading-relaxed text-start flex flex-col justify-between">
-                    <span>
-                      Not had membership yet? Register now so we can keep your
-                      items in cart and get your wishlist at any devices.
-                    </span>
+                    <span>{p1}</span>
                     <br />
-                    <span className="text-[18px] text-[#333]">
-                      Enjoy Your Trip!!!
-                    </span>
+                    <span className="text-[18px] text-[#333]">{p2}</span>
                   </p>
                 </div>
                 {/*footer*/}
@@ -56,10 +58,10 @@ const Modal = ({ showModal, closeModal }) => {
                     type="button"
                     onClick={() => {
                       closeModal(false);
-                      navigate("/login");
+                      navigate(`/${buttonLink}`);
                     }}
                   >
-                    Login
+                    {buttonLink}
                   </button>
                 </div>
               </div>

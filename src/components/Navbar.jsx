@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { LOGOUT } from "../constants/actionTypes";
+import { CLEAR_CART, LOGOUT } from "../constants/actionTypes";
 import decode from "jwt-decode";
 import { IoMdCart } from "react-icons/io";
 const Navbar = ({ closeModal }) => {
@@ -14,7 +14,7 @@ const Navbar = ({ closeModal }) => {
   const location = useLocation();
   const logout = () => {
     dispatch({ type: LOGOUT });
-
+    dispatch({ type: CLEAR_CART });
     navigate("/login");
 
     setUser(null);
@@ -39,13 +39,32 @@ const Navbar = ({ closeModal }) => {
       >
         furni.shop
       </div>
-      <div className="hidden xl:flex gap-20 text-[#242424] font-medium text-lg">
-        <a href="home" onClick={() => navigate("/")}>
+      <div className="hidden xl:flex text-[#242424] font-medium text-lg">
+        <a
+          className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
+          href="home"
+          onClick={() => navigate("/")}
+        >
           Home
         </a>
-        <a href="about">About</a>
-        <a href="features">Features</a>
-        <a href="contact">Contact</a>
+        <a
+          className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
+          href="about"
+        >
+          About
+        </a>
+        <a
+          className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
+          href="features"
+        >
+          Features
+        </a>
+        <a
+          className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
+          href="contact"
+        >
+          Contact
+        </a>
       </div>
       {!user && (
         <div className="flex gap-10 items-center">
@@ -75,7 +94,7 @@ const Navbar = ({ closeModal }) => {
       {user && (
         <div className="flex gap-10 items-center">
           <button onClick={logout}>Log out</button>
-          <div className="relative">
+          <div className="relative hover:-translate-y-1 duration-300 delay-200 cursor-pointer">
             <IoMdCart
               onClick={() => {
                 console.log("first");
@@ -85,7 +104,7 @@ const Navbar = ({ closeModal }) => {
               className="text-[20px]"
             />
             <div className="text-[12px] bg-bg text-white rounded-full absolute  w-[20px] h-[20px] flex justify-center items-center -right-4 -bottom-2">
-              {quantity}
+              {quantity || 0}
             </div>
           </div>
         </div>

@@ -15,8 +15,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="App w-full  relative">
-      <div className="flex flex-col xl:flex-row pb-[92px] h-full">
+    <div className="App w-full relative flex flex-col items-center">
+      <div className="flex flex-col  xl:flex-row xl:pb-[92px] h-full">
         <div className="block xl:absolute top-[45px] z-0">
           <div className="w-full xl:w-[570px] h-full xl:h-[470px] px-10 xl:px-24 pb-10 xl:py-20 gap-[30px] xl:absolute top-[45px] z-10 flex flex-col">
             <h1 className="text-[#244D4D] text-[36px] xl:text-[54px] leading-[45px] xl:leading-[72px] font-extrabold relative z-10 text-start">
@@ -35,7 +35,7 @@ const Home = () => {
         <div className="w-full flex-[6]">
           <img src={MainImg} alt="" className=" object-fill w-full" />
         </div>
-        <div className="w-24 h-full flex flex-col justify-center items-center gap-10 my-auto">
+        <div className="hidden xl:flex w-24 h-full  flex-col justify-center items-center gap-10 my-auto">
           <AiOutlineUp />
           <AiOutlineDown />
           <div className="">{"01"}</div>
@@ -47,7 +47,7 @@ const Home = () => {
       <Deal />
       <AboutUs />
       <Products />
-      <button onClick={() => navigate("/shop")}>Go Shopping</button>
+      <Footer />
     </div>
   );
 };
