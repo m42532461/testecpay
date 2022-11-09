@@ -3,7 +3,6 @@ import * as api from "../api/index.js";
 import {
   START_LOADING,
   END_LOADING,
-  SET_ORDERCODE,
   ADD_TO_CART,
   IMPORT_CART_FROM_DB,
   CLEAR_CART,
@@ -63,6 +62,7 @@ export const fetchCartFromDB = () => async (dispatch) => {
     dispatch({ type: START_LOADING });
 
     const { data } = await api.getCart();
+    console.log("fetchCartFromDB");
     console.log(data.cart);
     dispatch({ type: IMPORT_CART_FROM_DB, payload: data.cart });
 

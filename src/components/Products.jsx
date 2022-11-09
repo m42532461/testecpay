@@ -66,6 +66,11 @@ const Products = ({ products }) => {
             Light
           </span>
         </div>
+        {products?.length === 0 && (
+          <div className="w-full flex items-center justify-center">
+            No Products
+          </div>
+        )}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-14  w-full justify-center">
           {products?.map((product) => (
             <Product

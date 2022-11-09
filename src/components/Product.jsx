@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import product1 from "../assets/product1.png";
 import { BsCart3 } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";

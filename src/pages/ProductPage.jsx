@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation } from "react-router";
 import { addToCart } from "../action/cart";
 import { getAllProduct } from "../action/products";
 const ProductPage = () => {
@@ -8,7 +8,6 @@ const ProductPage = () => {
   const { products } = useSelector((state) => state.products);
   const id = location.pathname.split("/")[2];
   const theProduct = products.find((pro) => pro.id === id);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [chair1, chair2, chair3] = [
@@ -25,7 +24,7 @@ const ProductPage = () => {
     if (products.length === 0) {
       dispatch(getAllProduct());
     }
-  }, []);
+  }, [dispatch]);
 
   const handleAddToCart = (e) => {
     e.preventDefault();

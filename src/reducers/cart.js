@@ -1,13 +1,4 @@
 import {
-  //   FETCH_ALL,
-  //   FETCH_BY_SEARCH,
-  //   FETCH_BY_CREATOR,
-  //   FETCH_POST,
-  //   CREATE,
-  //   UPDATE,
-  //   DELETE,
-  //   LIKE,
-  //   COMMENT,
   START_LOADING,
   END_LOADING,
   SET_ORDERCODE,

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { makeOrder } from "../action/payment";
 import { addToCart, fetchCartFromDB, removeFromCart } from "../action/cart";
-import products from "../dumbData/index";
 import { CircularProgress } from "@material-ui/core";
 const Cart = () => {
   const { items, quantity, total, isLoading } = useSelector(

@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { CLEAR_CART, LOGOUT } from "../constants/actionTypes";
 import decode from "jwt-decode";
 import { IoMdCart } from "react-icons/io";
+import { fetchCartFromDB } from "../action/cart";
 const Navbar = ({ closeModal }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
@@ -15,16 +16,16 @@ const Navbar = ({ closeModal }) => {
   const logout = () => {
     dispatch({ type: LOGOUT });
     dispatch({ type: CLEAR_CART });
-    navigate("/login");
-
     setUser(null);
+
+    navigate("/login");
   };
   useEffect(() => {
     const token = user?.token;
 
     if (token) {
       const decodedToken = decode(token);
-
+      dispatch(fetchCartFromDB());
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
 
@@ -83,10 +84,10 @@ const Navbar = ({ closeModal }) => {
                 if (user) navigate("/cart");
                 else closeModal(true);
               }}
-              className="text-[20px]"
+              className="text-[20px] cursor-pointer select-none"
             />
             <div className="text-[12px] bg-bg text-white rounded-full absolute  w-[20px] h-[20px] flex justify-center items-center -right-4 -bottom-2">
-              11
+              0
             </div>
           </div>
         </div>
@@ -97,7 +98,6 @@ const Navbar = ({ closeModal }) => {
           <div className="relative hover:-translate-y-1 duration-300 delay-200 cursor-pointer">
             <IoMdCart
               onClick={() => {
-                console.log("first");
                 if (user) navigate("/cart");
                 else closeModal(true);
               }}

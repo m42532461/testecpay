@@ -1,22 +1,13 @@
 import { CircularProgress } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartFromDB } from "../action/cart";
-import products from "../dumbData/index";
 
 const CheckPage = () => {
   const { items, orderCode, quantity, total, isLoading } = useSelector(
     (state) => state.cart
   );
   const dispatch = useDispatch();
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    // X option1: 再次送所有資料至後端(call checkout的api)
-    // O option2: call另一個api, 以訂單編號來查詢已成立訂單, 撈出資料再call checkout api
-  };
-  const [uuid, setUuid] = useState("");
-  console.log(orderCode);
 
   useEffect(() => {
     window.scrollTo(0, 0);

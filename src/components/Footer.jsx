@@ -78,7 +78,7 @@ const Footer = () => {
               className="flex flex-col gap-5 text-start"
               key={link.title + index}
             >
-              <a href="" className="text-[17px] font-medium ">
+              <a href="/" className="text-[17px] font-medium ">
                 {link.title}
               </a>
               <ul className="flex flex-col gap-5">

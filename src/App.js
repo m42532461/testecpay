@@ -8,19 +8,14 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Shop from "./pages/Shop";
 import Navbar from "./components/Navbar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ProductPage from "./pages/ProductPage";
 import Modal from "./components/Modal";
 import { useEffect, useState } from "react";
-import Footer from "./components/Footer";
 import { getAllProduct } from "./action/products";
-import { GET_ALL_PRODUCTS } from "./constants/actionTypes";
 import TestPage from "./pages/TestPage";
 import ProductsPage from "./pages/ProductsPage";
 function App() {
-  // const user = JSON.parse(localStorage.getItem("profile"));
-  const { authData } = useSelector((state) => state.auth);
-  const { products } = useSelector((state) => state.products);
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const dispatch = useDispatch();
