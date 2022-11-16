@@ -8,7 +8,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Shop from "./pages/Shop";
 import Navbar from "./components/Navbar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProductPage from "./pages/ProductPage";
 import Modal from "./components/Modal";
 import { useEffect, useState } from "react";
@@ -17,6 +17,7 @@ import TestPage from "./pages/TestPage";
 import ProductsPage from "./pages/ProductsPage";
 function App() {
   const user = JSON.parse(localStorage.getItem("profile"));
+  const { authData } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -39,12 +40,15 @@ function App() {
         <Navbar showModal={showModal} closeModal={setShowModal} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={user ? <Cart /> : <Login />} />
-          <Route path="/check" element={user ? <CheckPage /> : <Login />} />
+          <Route path="/cart" element={authData ? <Cart /> : <Login />} />
+          <Route path="/check" element={authData ? <CheckPage /> : <Login />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/register" element={user ? <Home /> : <Register />} />
-          <Route path="/login" element={user ? <Home /> : <Login />} />
+          <Route
+            path="/register"
+            element={authData ? <Home /> : <Register />}
+          />
+          <Route path="/login" element={authData ? <Home /> : <Login />} />
           <Route path="/test" element={<TestPage />} />
           <Route path="/products/:category" element={<ProductsPage />} />
         </Routes>
