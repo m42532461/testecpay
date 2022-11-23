@@ -15,7 +15,7 @@ const Product = ({ title, price, discountPrice, img, id }) => {
   };
 
   return (
-    <div className="w-[312px] relative mx-auto">
+    <div className="w-[312px] relative mx-auto hover:-translate-y-2 hover:scale-110 duration-300 hover:shadow-2xl">
       <div
         className="flex flex-col gap-10 text-start pt-14 relative z-10 px-[50px] cursor-pointer"
         onClick={() => {

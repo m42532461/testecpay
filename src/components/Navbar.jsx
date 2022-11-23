@@ -42,26 +42,26 @@ const Navbar = ({ closeModal }) => {
       </div>
       <div className="hidden xl:flex text-[#242424] font-medium text-lg">
         <a
-          className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
+          className="hover:-translate-y-1 duration-200 hover:border-b-2 hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
           href="#home"
           onClick={() => navigate("/")}
         >
           Home
         </a>
         <a
-          className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
+          className="hover:-translate-y-1 duration-200 hover:border-b-2 hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
           href="#about"
         >
           About
         </a>
         <a
-          className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
+          className="hover:-translate-y-1 duration-200 hover:border-b-2 hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
           href="#products"
         >
           Products
         </a>
         <a
-          className="hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
+          className="hover:-translate-y-1 duration-200 hover:border-b-2 hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
           href="#contact"
         >
           Contact
@@ -69,16 +69,19 @@ const Navbar = ({ closeModal }) => {
       </div>
       {!user && (
         <div className="flex gap-10 items-center">
-          <button className="hidden xl:flex" onClick={() => navigate("/login")}>
+          <button
+            className="hidden hover:-translate-y-1 duration-200  xl:flex"
+            onClick={() => navigate("/login")}
+          >
             Log in
           </button>
           <button
-            className="hidden xl:flex"
+            className="hidden hover:-translate-y-1 duration-200  xl:flex"
             onClick={() => navigate("/register")}
           >
             Register
           </button>
-          <div className="relative">
+          <div className="relative hover:-translate-y-1 duration-200">
             <IoMdCart
               onClick={() => {
                 if (user) navigate("/cart");
@@ -95,7 +98,7 @@ const Navbar = ({ closeModal }) => {
       {user && (
         <div className="flex gap-10 items-center">
           <button onClick={logout}>Log out</button>
-          <div className="relative hover:-translate-y-1 duration-300 delay-200 cursor-pointer">
+          <div className="relative hover:-translate-y-1 duration-300 cursor-pointer">
             <IoMdCart
               onClick={() => {
                 if (user) navigate("/cart");

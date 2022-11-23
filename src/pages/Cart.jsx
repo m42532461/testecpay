@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeOrder } from "../action/payment";
 import { addToCart, fetchCartFromDB, removeFromCart } from "../action/cart";
 import { CircularProgress } from "@material-ui/core";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 const Cart = () => {
   const { items, quantity, total, isLoading } = useSelector(
     (state) => state.cart
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
 
   useEffect(() => {
     if (items?.length === 0) {
@@ -51,10 +53,13 @@ const Cart = () => {
           Shopping Cart
         </h1>
 
-        {isLoading ? (
+        {isLoading && items?.length === 0 ? (
           <CircularProgress />
         ) : (
-          <ul className="flex flex-col gap-10 xl:gap-20 mt-5 xl:mt-24 justify-center">
+          <ul
+            className="flex flex-col gap-10 xl:gap-20 mt-5 xl:mt-24 justify-center"
+            ref={parent}
+          >
             {items?.map((product) => (
               <li
                 key={product.id}

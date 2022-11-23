@@ -95,7 +95,7 @@ const CheckPage = () => {
                   type="submit"
                   value="Submit"
                   disabled={!orderCode}
-                  className="px-20 xl:px-32 bg-white text-bg py-4"
+                  className="hover:scale-110 duration-300 cursor-pointer px-20 xl:px-32 bg-white text-bg py-4"
                 />
               </form>
             </div>
