@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Product from "./Product";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
-const Products = ({ products }) => {
+const Products = ({ products, closeModal }) => {
   const navigate = useNavigate();
   const cate = useLocation().pathname?.split("/")[2];
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
   return (
     <div
@@ -31,7 +33,9 @@ const Products = ({ products }) => {
             className={`cursor-pointer hover:-translate-y-1 hover:scale-110 duration-500 delay-100 ${
               cate === "all" || !cate ? "text-[#3d3d3f]" : ""
             }`}
-            onClick={() => navigate("/products/all")}
+            onClick={() => {
+              navigate("/products/all");
+            }}
           >
             All
           </span>
@@ -39,7 +43,9 @@ const Products = ({ products }) => {
             className={`cursor-pointer hover:-translate-y-1 hover:scale-110 hover:text-[#3d3d3f] hover:font-medium duration-500 delay-100 ${
               cate === "bed" ? "text-[#3d3d3f]" : ""
             }`}
-            onClick={() => navigate("/products/bed")}
+            onClick={() => {
+              navigate("/products/bed");
+            }}
           >
             Bed
           </span>
@@ -47,7 +53,9 @@ const Products = ({ products }) => {
             className={`cursor-pointer hover:-translate-y-1 hover:scale-110 hover:text-[#3d3d3f] hover:font-medium duration-500 delay-100 ${
               cate === "sofa" ? "text-[#3d3d3f]" : ""
             }`}
-            onClick={() => navigate("/products/sofa")}
+            onClick={() => {
+              navigate("/products/sofa");
+            }}
           >
             Sofa
           </span>
@@ -55,7 +63,9 @@ const Products = ({ products }) => {
             className={`cursor-pointer hover:-translate-y-1 hover:scale-110 hover:text-[#3d3d3f] hover:font-medium duration-500 delay-100 ${
               cate === "chair" ? "text-[#3d3d3f]" : ""
             }`}
-            onClick={() => navigate("/products/chair")}
+            onClick={() => {
+              navigate("/products/chair");
+            }}
           >
             Chair
           </span>
@@ -63,7 +73,9 @@ const Products = ({ products }) => {
             className={`cursor-pointer hover:-translate-y-1 hover:scale-110 hover:text-[#3d3d3f] hover:font-medium duration-500 delay-100 ${
               cate === "light" ? "text-[#3d3d3f]" : ""
             }`}
-            onClick={() => navigate("/products/light")}
+            onClick={() => {
+              navigate("/products/light");
+            }}
           >
             Light
           </span>
@@ -85,6 +97,7 @@ const Products = ({ products }) => {
               img={product.img}
               id={product.id}
               key={product.id}
+              closeModal={closeModal}
             />
           ))}
         </div>

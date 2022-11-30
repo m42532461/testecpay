@@ -77,6 +77,7 @@ const CheckPage = () => {
         <div className="flex-1 w-full flex flex-col items-end text-white">
           <div className="bg-bg w-full xl:w-[400px] h-full xl:h-[700px] flex justify-center items-center rounded-xl">
             <div className="flex w-full flex-col  gap-10 text-[20px] p-10 py-20 xl:py-10">
+              <input type="text" />
               <p>共有{quantity}件商品</p>
               <p>
                 運費: $<span className="line-through">60</span>

@@ -23,7 +23,6 @@ const Navbar = ({ closeModal }) => {
   };
   useEffect(() => {
     const token = user?.token;
-
     if (token) {
       const decodedToken = decode(token);
       dispatch(fetchCartFromDB());
@@ -98,7 +97,7 @@ const Navbar = ({ closeModal }) => {
       )}
       {user && (
         <div className="flex gap-10 items-center">
-          <button className="" onClick={() => navigate("/account")}>
+          <button className="" onClick={() => navigate("/account/user")}>
             Account
           </button>
           <button onClick={logout}>Log out</button>

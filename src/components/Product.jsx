@@ -3,7 +3,7 @@ import { BsCart3 } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../action/cart";
-const Product = ({ title, price, discountPrice, img, id }) => {
+const Product = ({ title, price, discountPrice, img, id, closeModal }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -11,7 +11,7 @@ const Product = ({ title, price, discountPrice, img, id }) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     if (user) dispatch(addToCart(title, price, discountPrice, id, img));
-    else navigate("/login");
+    else closeModal(true);
   };
 
   return (

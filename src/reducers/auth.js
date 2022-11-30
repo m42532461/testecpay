@@ -1,6 +1,6 @@
 import * as actionType from "../constants/actionTypes";
 
-const authReducer = (state = { authData: null }, action) => {
+const authReducer = (state = { authData: null, isLoading: false }, action) => {
   switch (action.type) {
     case actionType.START_LOADING:
       // return { ...state, isLoading: true };

@@ -54,7 +54,7 @@ function App() {
           <Route path="/test" element={<TestPage />} />
           <Route path="/products/:category" element={<ProductsPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account/*" element={<Account />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,3 +1,4 @@
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { CircularProgress } from "@material-ui/core";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +14,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { isLoading, isError } = useSelector((state) => state.auth);
+
+  const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
 
   const dispatch = useDispatch();
   const handleCloseModal = () => {
@@ -36,7 +39,10 @@ const Login = () => {
         buttonLink="register"
       />
       <div className="w-[1440px] px-24 flex justify-center pb-24">
-        <div className="flex flex-col justify-center items-center p-10 mt-20 border-bg border-[10px] rounded-[10px] text-bg xl:w-[400px] text-[20px] xl:text-[24px]">
+        <div
+          ref={parent}
+          className="flex flex-col justify-center items-center p-10 mt-20 border-bg border-[10px] rounded-[10px] text-bg xl:w-[400px] text-[20px] xl:text-[24px]"
+        >
           <div className="flex pb-10">
             <h1 className="font-bold">Login</h1>
           </div>

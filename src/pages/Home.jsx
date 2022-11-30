@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import Products from "../components/Products";
 import { MainImg, DOTS } from "../assets";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
-const Home = () => {
+const Home = ({ closeModal }) => {
   const { products } = useSelector((state) => state.products);
   const [displace, setDisplace] = useState(0);
 
@@ -78,7 +78,7 @@ const Home = () => {
       <Brand />
       <Deal />
       <AboutUs />
-      <Products products={products} />
+      <Products products={products} closeModal={closeModal} />
       <Footer />
     </div>
   );
