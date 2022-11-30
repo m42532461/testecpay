@@ -15,6 +15,8 @@ import { useEffect, useState } from "react";
 import { getAllProduct } from "./action/products";
 import TestPage from "./pages/TestPage";
 import ProductsPage from "./pages/ProductsPage";
+import Dashboard from "./pages/Dashboard";
+import Account from "./pages/Account";
 function App() {
   const user = JSON.parse(localStorage.getItem("profile"));
   const { authData } = useSelector((state) => state.auth);
@@ -51,6 +53,8 @@ function App() {
           <Route path="/login" element={authData ? <Home /> : <Login />} />
           <Route path="/test" element={<TestPage />} />
           <Route path="/products/:category" element={<ProductsPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </div>
     </BrowserRouter>

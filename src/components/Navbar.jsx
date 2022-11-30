@@ -17,6 +17,7 @@ const Navbar = ({ closeModal }) => {
     dispatch({ type: LOGOUT });
     dispatch({ type: CLEAR_CART });
     setUser(null);
+    localStorage.removeItem("profile");
 
     navigate("/login");
   };
@@ -97,6 +98,9 @@ const Navbar = ({ closeModal }) => {
       )}
       {user && (
         <div className="flex gap-10 items-center">
+          <button className="" onClick={() => navigate("/account")}>
+            Account
+          </button>
           <button onClick={logout}>Log out</button>
           <div className="relative hover:-translate-y-1 duration-300 cursor-pointer">
             <IoMdCart

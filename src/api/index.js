@@ -13,6 +13,8 @@ API.interceptors.request.use((req) => {
 });
 
 export const makeOrder = (orderData) => API.post(`/order`, orderData);
+export const fetchOrders = () => API.get("/order");
+
 export const addToCart = (item) => API.post(`/user/cart/add`, item);
 export const removeFromCart = (item) => API.post(`/user/cart/remove`, item);
 export const getCart = () => API.get(`/user/cart/info`);
