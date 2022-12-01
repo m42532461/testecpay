@@ -25,7 +25,7 @@ const Cart = () => {
     dispatch(makeOrder(items));
     // 訂單編號+廠商交易編號
     // call api 產生uuid(20碼) 送至後端(存至資料庫)
-    navigate("/check"); // redirect至確認商品頁
+    navigate("/checkout"); // redirect至確認商品頁
   };
   const handleClick = (mode, item) => {
     if (mode === "up") {

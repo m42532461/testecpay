@@ -1,9 +1,32 @@
-import { indigo } from "@material-ui/core/colors";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
+import Select from "react-select";
+import CitySelector from "../../components/CitySelector";
+const colourOptions = [
+  { value: "male", label: "男" },
+  { value: "female", label: "女" },
+  { value: "unknown", label: "不透漏" },
+];
 const User = () => {
   const user = JSON.parse(localStorage.getItem("profile")).result;
+  console.log(user);
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRtl, setIsRtl] = useState(false);
+
+  const [input, setInput] = useState({ ...user });
+
+  const dispatch = useDispatch();
+
+  const handleInput = (e) => {
+    setInput({ ...input, [e.target.id]: e.target.value });
+    console.log(input);
+  };
+  const handleSubmit = () => {
+    console.log(input);
+    dispatch();
+  };
   return (
     <div className="w-full">
       <h1>{user.name}</h1>
@@ -23,15 +46,9 @@ const User = () => {
         {isEditing && (
           <div>
             {[
-              { id: "mail", title: "信箱", type: "mail", value: user.email },
+              { id: "name", title: "姓名", type: "text", value: user.name },
+              { id: "email", title: "信箱", type: "mail", value: user.email },
               { id: "phone", title: "手機", type: "text", value: user.phone },
-              {
-                id: "credit",
-                title: "信用卡",
-                type: "text",
-                value: user.credit,
-              },
-              ,
               { id: "birth", title: "生日", type: "date", value: user.birth },
             ].map((info) => (
               <div className="flex flex-col" key={info.id + info.type}>
@@ -41,17 +58,25 @@ const User = () => {
                   id={info.id}
                   className="border p-2"
                   defaultValue={info.value}
+                  onChange={handleInput}
                 />
               </div>
             ))}
             <div className="flex flex-col">
               <label htmlFor="gender">性別</label>
-              <select name="gender" id="gender" className="p-2">
-                <option value=""></option>
-                <option value="male">男</option>
-                <option value="female">女</option>
-                <option value="female">不透漏</option>
-              </select>
+              <Select
+                id="gender"
+                className="basic-single"
+                classNamePrefix="select"
+                isLoading={isLoading}
+                isRtl={isRtl}
+                name="color"
+                options={colourOptions}
+                onChange={(e) => {
+                  setInput({ ...input, gender: e.value });
+                  console.log(input);
+                }}
+              />
             </div>
           </div>
         )}
@@ -64,8 +89,19 @@ const User = () => {
           編輯
         </button>
         <button className="bg-gray-300 p-3">發送驗證碼</button>
-        <button className="bg-gray-300 p-3">取消</button>
-        <button className="bg-gray-300 p-3">儲存</button>
+        <button className="bg-gray-300 p-3">新增地址</button>
+        <button
+          className="bg-gray-300 p-3"
+          onClick={() => {
+            setInput({ ...user });
+            setIsEditing(false);
+          }}
+        >
+          取消
+        </button>
+        <button className="bg-gray-300 p-3" onClick={handleSubmit}>
+          儲存
+        </button>
       </div>
     </div>
   );

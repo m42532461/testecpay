@@ -41,3 +41,21 @@ export const signup = (formData, router) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const updateUser = (formData, router) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+
+    const { data } = await api.signUp(formData);
+    if (data?.result && data?.token) {
+      dispatch({ type: AUTH, data });
+      router("/account/user");
+    }
+    dispatch({ type: END_LOADING });
+    // router.push("/");
+  } catch (error) {
+    dispatch({ type: ERROR });
+    dispatch({ type: END_LOADING });
+    console.log(error);
+  }
+};
