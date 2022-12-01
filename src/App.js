@@ -40,15 +40,12 @@ function App() {
         <Navbar showModal={showModal} closeModal={setShowModal} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={authData ? <Cart /> : <Login />} />
-          <Route path="/check" element={authData ? <CheckPage /> : <Login />} />
+          <Route path="/cart" element={user ? <Cart /> : <Login />} />
+          <Route path="/check" element={user ? <CheckPage /> : <Login />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route
-            path="/register"
-            element={authData ? <Home /> : <Register />}
-          />
-          <Route path="/login" element={authData ? <Home /> : <Login />} />
+          <Route path="/register" element={user ? <Home /> : <Register />} />
+          <Route path="/login" element={user ? <Home /> : <Login />} />
           <Route path="/test" element={<TestPage />} />
           <Route path="/products/:category" element={<ProductsPage />} />
         </Routes>

@@ -51,18 +51,21 @@ const Navbar = ({ closeModal }) => {
         <a
           className="hover:-translate-y-1 duration-200 hover:border-b-2 hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
           href="#about"
+          onClick={() => navigate("/")}
         >
           About
         </a>
         <a
           className="hover:-translate-y-1 duration-200 hover:border-b-2 hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
           href="#products"
+          onClick={() => navigate("/")}
         >
           Products
         </a>
         <a
           className="hover:-translate-y-1 duration-200 hover:border-b-2 hover:bg-gray-100/50 px-10 rounded-[5px] py-3"
           href="#contact"
+          onClick={() => navigate("/")}
         >
           Contact
         </a>
