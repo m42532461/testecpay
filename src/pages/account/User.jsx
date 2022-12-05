@@ -64,7 +64,7 @@ const User = () => {
             ))}
             <div className="flex flex-col">
               <label htmlFor="gender">性別</label>
-              <Select
+              <select
                 id="gender"
                 className="basic-single"
                 classNamePrefix="select"

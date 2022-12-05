@@ -12,6 +12,8 @@ import { CLEAR_ERROR } from "../constants/actionTypes";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isEmailTouched, setIsEmailTouched] = useState(false);
+  const [isPasswordTouched, setIsPasswordTouched] = useState(false);
   const navigate = useNavigate();
   const { isLoading, isError } = useSelector((state) => state.auth);
 
@@ -27,6 +29,8 @@ const Login = () => {
     dispatch(fetchCartFromDB());
     setEmail("");
     setPassword("");
+    setIsEmailTouched(false);
+    setIsPasswordTouched(false);
   };
   return (
     <>
@@ -47,21 +51,45 @@ const Login = () => {
             <h1 className="font-bold">Login</h1>
           </div>
           <div className="flex flex-col items-center gap-5">
-            <input
-              type="email"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="flex flex-col">
+              <input
+                type="email"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onBlur={() => {
+                  setIsEmailTouched(true);
+                }}
+              />
+              {isEmailTouched &&
+                (email.length === 0 || !email.includes("@")) && (
+                  <span className="text-red-300 text-sm">Invalid email</span>
+                )}
+            </div>
+            <div className="flex flex-col">
+              <input
+                type="password"
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onBlur={() => {
+                  setIsPasswordTouched(true);
+                }}
+              />
+              {isPasswordTouched && password.length === 0 && (
+                <span className="text-red-300 text-sm">invalid password</span>
+              )}
+            </div>
             <button
+              disabled={
+                email.trim() === "" ||
+                !email.includes("@") ||
+                password.trim() === "" ||
+                !isEmailTouched ||
+                !isPasswordTouched
+              }
               onClick={handleSubmit}
-              disabled={isLoading}
+              // disabled={isLoading}
               className={`text-[18px] mt-10 px-10 py-3 border-bg border-[3px] hover:bg-bg hover:text-white rounded-full ${
                 isLoading ? "hover:bg-gray-400 bg-gray-400 border-gray-600" : ""
               }`}
