@@ -6,6 +6,7 @@ import {
   IMPORT_CART_FROM_DB,
   CLEAR_CART,
   DELETE_FROM_CART,
+  ERROR,
 } from "../constants/actionTypes";
 
 export default (
@@ -78,6 +79,8 @@ export default (
           : (temp.total -= action.payload.price * action.payload.quantity);
       }
       return temp;
+    case ERROR:
+      return { ...state, isError: true };
     default:
       return state;
   }

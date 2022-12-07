@@ -4,16 +4,30 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signin } from "../action/auth";
-import { fetchCartFromDB } from "../action/cart";
 import Footer from "../components/Footer";
 import Modal from "../components/Modal";
 import { CLEAR_ERROR } from "../constants/actionTypes";
+import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isEmailTouched, setIsEmailTouched] = useState(false);
-  const [isPasswordTouched, setIsPasswordTouched] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({
+    defaultValues: { email: "test@gmail.com", password: "test" },
+  });
+  // console.log(watch());
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    console.log(errors);
+    dispatch(signin({ email: data.email, password: data.password }, navigate));
+    // dispatch(fetchCartFromDB());
+  };
   const navigate = useNavigate();
   const { isLoading, isError } = useSelector((state) => state.auth);
 
@@ -23,15 +37,9 @@ const Login = () => {
   const handleCloseModal = () => {
     dispatch({ type: CLEAR_ERROR });
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(signin({ email, password }, navigate));
-    dispatch(fetchCartFromDB());
-    setEmail("");
-    setPassword("");
-    setIsEmailTouched(false);
-    setIsPasswordTouched(false);
-  };
+  useEffect(() => {
+    reset({ email: "", password: "" });
+  }, [isSubmitSuccessful]);
   return (
     <>
       <Modal
@@ -55,40 +63,36 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onBlur={() => {
-                  setIsEmailTouched(true);
-                }}
+                {...register("email", {
+                  required: "This is required",
+                  // minLength: {
+                  //   value: 6,
+                  //   message: "Invalid email",
+                  // },
+                  // pattern: {
+                  //   value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
+                  //   message: "Invalid email",
+                  // },
+                })}
               />
-              {isEmailTouched &&
-                (email.length === 0 || !email.includes("@")) && (
-                  <span className="text-red-300 text-sm">Invalid email</span>
-                )}
+              <p className="text-red-300 text-sm">{errors.email?.message}</p>
             </div>
             <div className="flex flex-col">
               <input
                 type="password"
                 placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onBlur={() => {
-                  setIsPasswordTouched(true);
-                }}
+                {...register("password", {
+                  required: "This is required",
+                  minLength: {
+                    value: 2,
+                    message: "Password too short",
+                  },
+                })}
               />
-              {isPasswordTouched && password.length === 0 && (
-                <span className="text-red-300 text-sm">invalid password</span>
-              )}
+              <p className="text-red-300 text-sm">{errors.password?.message}</p>
             </div>
             <button
-              disabled={
-                email.trim() === "" ||
-                !email.includes("@") ||
-                password.trim() === "" ||
-                !isEmailTouched ||
-                !isPasswordTouched
-              }
-              onClick={handleSubmit}
+              onClick={handleSubmit(onSubmit)}
               // disabled={isLoading}
               className={`text-[18px] mt-10 px-10 py-3 border-bg border-[3px] hover:bg-bg hover:text-white rounded-full ${
                 isLoading ? "hover:bg-gray-400 bg-gray-400 border-gray-600" : ""

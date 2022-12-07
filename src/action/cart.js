@@ -68,6 +68,7 @@ export const fetchCartFromDB = () => async (dispatch) => {
 
     dispatch({ type: END_LOADING });
   } catch (error) {
+    dispatch({ type: END_LOADING });
     console.log(error);
   }
 };
