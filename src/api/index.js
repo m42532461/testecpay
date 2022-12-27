@@ -13,7 +13,7 @@ API.interceptors.request.use((req) => {
 
   return req;
 });
-
+//
 export const makeOrder = (orderData) => API.post(`/order`, orderData);
 export const addToCart = (item) => API.post(`/user/cart/add`, item);
 export const removeFromCart = (item) => API.post(`/user/cart/remove`, item);
