@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://ecommerce-ecpay.onrender.com" });
+const API = axios.create({
+  baseURL: "https://ecpay-production.up.railway.app",
+});
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
